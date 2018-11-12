@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { getMetricMetaInfo, timeToString } from '../utils/helpers'
-import UdaciSlider from './UdaciSlider';
-import UdaciSteppers from './UdaciSteppers';
-import DateHeader from './DateHeader';
+import UdaciSlider from './UdaciSlider'
+import UdaciSteppers from './UdaciSteppers'
+import DateHeader from './DateHeader'
+import TextButton from './TextButton'
+import { submitEntry, removeEntry } from '../utils/api'
+import { Ionicons } from '@expo/vector-icons'
 
-function SubmitBtn ({ onPass }) {
+function SubmitBtn ({ onPress }) {
   return (
     <TouchableOpacity onPress={onPress}>
       <Text>SUBMIT</Text>
@@ -62,12 +65,34 @@ export default class AddEntry extends Component {
     }))
     // Navigate to home
 
-    // Save to 'DB'
+    submitEntry({ key, entry })
 
     // Clear local notification
   }
-  render() {
+  reset = () => {
+    const key = timeToString()
+
+    // Update Redux
+
+    // Rotue to Home
+
+    // Update "DB"
+
+  }
+  render() { 
     const metaInfo = getMetricMetaInfo()
+
+    if (this.props.alreadyLogged) {
+      return (
+        <View>
+          <Ionicons name={'ios-happy-outline'} size={100} />
+          <Text>You already logged your information for today.</Text>
+          <TextButton onPress={this.reset}>
+            Reset
+          </TextButton>
+        </View>
+      )
+    }
 
     return (
       <View>
