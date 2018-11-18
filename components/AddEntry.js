@@ -90,7 +90,7 @@ class AddEntry extends Component {
   }
   toHome = () => {
     this.props.navigation.dispatch(NavigationActions.back(
-      key: 'AddEntry'
+      {key: 'AddEntry'}
     ))
   }
   render() { 
