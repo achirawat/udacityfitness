@@ -1,18 +1,21 @@
 {
   "expo": {
     "name": "udacityfitness",
-    "description": "This project is really great.",
+    "description": "The best triathlon tracker ever",
     "slug": "udacityfitness",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "https://tylermcginnis.com/udacifitness-512.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
+    },
+    "notification": {
+      "icon": "https://tylermcginnis.com/udacifitness-45.png"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "org.udacifitness.exp"
+    },
+    "android": {
+      "package": "org.udacifitness.exp"
     }
   }
 }

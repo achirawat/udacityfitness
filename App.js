@@ -11,6 +11,7 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import Constants from 'expo'
 import EntryDetail from './components/EntryDetail'
 import Live from './components/Live'
+import { setLocalNotification } from './utils/helpers'
 
 function UdaciStatusBar ({ backgroundColor, ...props }) {
   return (
@@ -50,7 +51,7 @@ const Tabs = createMaterialTopTabNavigator({
     activeTintColor: Platform.OS === 'ios' ? purple : white,
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? white : purple,
+      backgroundColor: "#D7DBDD",
       shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {
         width: 0,
@@ -78,6 +79,9 @@ const MainNavigator = createStackNavigator({
 })
 
 export default class App extends React.Component {
+  componentDidMount () {
+    setLocalNotification()
+  }
   render() {
     return (
       <Provider store={createStore(reducer)}>
